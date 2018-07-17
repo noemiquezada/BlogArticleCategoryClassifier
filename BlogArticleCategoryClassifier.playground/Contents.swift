@@ -11,12 +11,11 @@ let model = try MLTextClassifier(trainingData: trainingData, textColumn: "title"
 // Import Test Data
 let testCSV = URL(fileURLWithPath: "/Users/noemiquezada/Documents/playgrounds/BlogArticleCategoryClassifier/PostsTestData.csv")
 let testData = try MLDataTable(contentsOf: testCSV)
-
-// Evaluate Model
+//
+//// Evaluate Model
 let result = model.evaluation(on: testData)
-print (result)
-let writeToUrl = URL(fileURLWithPath: "/Users/noemiquezada/Documents/playgrounds/BlogArticleCategoryClassifier/BlogArticleCategoryClassifier.mlmodel")
 
-// Create ML Model
+// Save Model
+let writeToUrl = URL(fileURLWithPath: "/Users/noemiquezada/Documents/playgrounds/BlogArticleCategoryClassifier/BlogArticleCategoryClassifier.mlmodel")
 try model.write(to: writeToUrl)
 
